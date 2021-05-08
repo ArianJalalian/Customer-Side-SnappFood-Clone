@@ -5,8 +5,6 @@ class FoodCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: GestureDetector(
-        onTap: () {},
         child: Column(
           children: <Widget>[
             SizedBox(
@@ -97,7 +95,6 @@ class FoodCard extends StatelessWidget {
             ),
           ],
         ),
-      ),
     );
   }
 }

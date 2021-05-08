@@ -1,6 +1,10 @@
 import 'package:customer_side/Widgets/FoodCard.dart';
 import 'package:customer_side/Widgets/HomePage.dart';
+import 'package:customer_side/Widgets/RestaurantPage.dart';
 import 'package:flutter/material.dart';
+import 'package:same_features/Models/Seller.dart';
+import 'package:same_features/Widgets/FirstPage.dart';
+import 'package:same_features/Widgets/ThemeData.dart';
 
 import './SignUp.dart';
 import './OrderCard.dart';
@@ -10,18 +14,19 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  Seller seller =  Seller(55456 , "McDonald" ,"455" , "2154685") ;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-
-      ),
+      theme: appThemeData() ,
       title: 'Flutter Demo',
-      home: MyHomePage(),
+      home: Scaffold(
+        body: RestaurantPage(seller: seller ) ,
+      ),
     );
   }
 }
+
 
 class MyHomePage extends StatelessWidget {
   // This widget is the root of your application.
