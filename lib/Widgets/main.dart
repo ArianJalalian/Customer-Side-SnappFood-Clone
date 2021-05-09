@@ -8,6 +8,8 @@ import 'package:same_features/Widgets/ThemeData.dart';
 
 import './SignUp.dart';
 import './OrderCard.dart';
+import 'CommentCard.dart';
+import 'CommentPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,9 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: appThemeData() ,
       title: 'Flutter Demo',
-      home: Scaffold(
-        body: RestaurantPage(seller: seller ) ,
-      ),
+      home: RestaurantPage() ,
     );
   }
 }
