@@ -1,9 +1,11 @@
 import 'package:customer_side/Widgets/TextStyle.dart';
 import 'package:flutter/material.dart';
+import 'package:same_features/Models/User.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final User args = ModalRoute.of(context).settings.arguments as User;
     return Scaffold(
       bottomNavigationBar: MyBottomNavigation(),
       body: SingleChildScrollView(
@@ -24,7 +26,8 @@ class HomePage extends StatelessWidget {
   Widget roundedBox(String title, BuildContext ctx) {
     return Center(
       child: Container(
-        margin: EdgeInsets.fromLTRB(0, MediaQuery.of(ctx).size.height * 0.05 , 0, 0),
+        margin:
+            EdgeInsets.fromLTRB(0, MediaQuery.of(ctx).size.height * 0.05, 0, 0),
         child: ConstrainedBox(
           constraints: BoxConstraints.tightFor(
             width: MediaQuery.of(ctx).size.width * 0.7,
@@ -32,7 +35,7 @@ class HomePage extends StatelessWidget {
           ),
           //margin: EdgeInsets.fromLTRB(0, MediaQuery.of(ctx).size.height * 0.05 , 0 , 0),
           child: ElevatedButton(
-            onPressed: () {} ,
+            onPressed: () {},
             child: Center(
               child: Text(
                 title,
@@ -49,7 +52,7 @@ class HomePage extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
               ),
-              backgroundColor: MaterialStateProperty.all(Colors.pink) ,
+              backgroundColor: MaterialStateProperty.all(Colors.pink),
             ),
           ),
         ),

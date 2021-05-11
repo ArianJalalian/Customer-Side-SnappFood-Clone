@@ -1,6 +1,8 @@
 import 'package:customer_side/Widgets/FoodCard.dart';
 import 'package:customer_side/Widgets/HomePage.dart';
+import 'package:customer_side/Widgets/SignIn.dart';
 import 'package:customer_side/Widgets/RestaurantPage.dart';
+import 'package:customer_side/Widgets/SignUpPage.dart';
 import 'package:flutter/material.dart';
 import 'package:same_features/Models/Seller.dart';
 import 'package:same_features/Widgets/FirstPage.dart';
@@ -10,19 +12,27 @@ import './SignUp.dart';
 import './OrderCard.dart';
 import 'CommentCard.dart';
 import 'CommentPage.dart';
+import 'SignInPage.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  Seller seller =  Seller(55456 , "McDonald" ,"455" , "2154685") ;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: appThemeData() ,
-      title: 'Flutter Demo',
-      home: RestaurantPage() ,
+      initialRoute: '/' ,
+      routes: {
+        '/' : (context) => SignInPage() ,
+        '/SignUpPage' : (context) => SignUpPage() ,
+        '/HomePage' : (context) => HomePage() ,
+      },
+      title: "MealApp" ,
+      //home : SignInPage(),
+
     );
   }
 }

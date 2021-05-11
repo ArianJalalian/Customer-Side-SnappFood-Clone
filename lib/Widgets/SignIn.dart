@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:same_features/Widgets/TextStyle.dart';
 import 'package:same_features/Models/User.dart';
+import '../DummyData/Users.dart';
+import 'SignUp.dart';
 
 class MyFirstPageInit extends StatelessWidget {
   final Function onSignIn;
-  final Function onSignUP;
-  MyFirstPageInit({Key key, this.onSignIn, this.onSignUP}) : super(key: key);
+  final Function onSignUp;
+  MyFirstPageInit({Key key, this.onSignIn, this.onSignUp}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +27,7 @@ class MyFirstPageInit extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.8,
               child: MyForm(
                 onSignIn: onSignIn,
-                onSignUP: onSignUP,
+                onSignUp: onSignUp,
               ),
             ),
           ],
@@ -37,8 +39,8 @@ class MyFirstPageInit extends StatelessWidget {
 
 class MyForm extends StatefulWidget {
   final Function onSignIn;
-  final Function onSignUP;
-  MyForm({Key key, this.onSignIn, this.onSignUP}) : super(key: key);
+  final Function onSignUp;
+  MyForm({Key key, this.onSignIn, this.onSignUp}) : super(key: key);
   @override
   _MyFormState createState() => _MyFormState();
 }
@@ -49,10 +51,11 @@ class _MyFormState extends State<MyForm> {
   String _phoneNumber;
   String _password;
   Function onSignIn;
-  Function onSignUP;
+  Function onSignUp;
+  User _user ;
   @override
   Widget build(BuildContext context) {
-    onSignUP = widget.onSignUP;
+    onSignUp = widget.onSignUp;
     onSignIn = widget.onSignIn;
     return Form(
       key: _formKey,
@@ -65,7 +68,7 @@ class _MyFormState extends State<MyForm> {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
                 onSignIn(
-                    User(
+                    _user = User(
                       phoneNumber: _phoneNumber,
                       password: _password,
                     )
@@ -81,7 +84,7 @@ class _MyFormState extends State<MyForm> {
               TextButton(
                 child: Text("make one"),
                 onPressed: (){
-                  onSignUP();
+                 onSignUp() ;
                 },
               )
             ],
