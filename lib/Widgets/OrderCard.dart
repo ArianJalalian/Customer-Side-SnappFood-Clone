@@ -8,7 +8,7 @@ class OrderCard extends StatelessWidget {
 
   final date;
 
-  final String address;
+  final address;
 
   final price;
 

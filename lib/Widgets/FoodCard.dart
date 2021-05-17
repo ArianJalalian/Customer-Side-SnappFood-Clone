@@ -1,7 +1,12 @@
-import 'package:customer_side/Widgets/TextStyle.dart';
 import 'package:flutter/material.dart';
 
+import 'package:customer_side/Widgets/TextStyle.dart';
+
+import 'package:same_features/Models/Food.dart';
+
 class FoodCard extends StatelessWidget {
+  final Food food ;
+  FoodCard({this.food});
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -19,11 +24,11 @@ class FoodCard extends StatelessWidget {
                 Column(
                   children: <Widget>[
                     Text(
-                      "title",
+                      food.name,
                       style: MyTextStyle.boldTitleStyle(),
                     ),
                     Text(
-                      "subtitle",
+                      food.desc ,
                       style: MyTextStyle.subtitleStyle(),
                     ),
                   ],
@@ -32,7 +37,7 @@ class FoodCard extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.515,
                 ),
                 Container(
-                  child: Center(child: Text("IMAGE")),
+                  //child: food.hasPhoto() ? Center(child: Text("IMAGE")) : Center(child: Text("Default Image")),
                   width:MediaQuery.of(context).size.width * 0.25,
                   height: MediaQuery.of(context).size.width * 0.25,
                   decoration: BoxDecoration(
@@ -54,7 +59,7 @@ class FoodCard extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.05,
                 ) ,
                 Text(
-                  "60 \$",
+                  "${food.price} \$",
                   style: MyTextStyle.boldTitleStyle(),
                 ),
                 SizedBox(

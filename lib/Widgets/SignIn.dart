@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:same_features/Widgets/TextStyle.dart';
 import 'package:same_features/Models/User.dart';
-import '../DummyData/Users.dart';
 import 'SignUp.dart';
 
 class MyFirstPageInit extends StatelessWidget {
