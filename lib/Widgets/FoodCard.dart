@@ -24,30 +24,26 @@ class FoodCard extends StatelessWidget {
                 Column(
                   children: <Widget>[
                     Text(
-                      food.name,
+                      "Food",
                       style: MyTextStyle.boldTitleStyle(),
                     ),
                     Text(
-                      food.desc ,
+                      "Description" ,
                       style: MyTextStyle.subtitleStyle(),
                     ),
                   ],
                 ),
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.515,
+                  width: MediaQuery.of(context).size.width * 0.465,
                 ),
-                Container(
-                  //child: food.hasPhoto() ? Center(child: Text("IMAGE")) : Center(child: Text("Default Image")),
-                  width:MediaQuery.of(context).size.width * 0.25,
-                  height: MediaQuery.of(context).size.width * 0.25,
-                  decoration: BoxDecoration(
-                    color: Colors.pink,
-                    borderRadius: BorderRadius.all(Radius.circular(20)),
-                  ),
-                ),
-                SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.05,
-                ),
+                ClipRRect(
+                  child: Image(
+                    image: AssetImage('Images/defaultFood.jpg') ,
+                    width: MediaQuery.of(context).size.width * (0.26),
+                    height: MediaQuery.of(context).size.width * (0.26),
+                  ) ,
+                  borderRadius: BorderRadius.all(Radius.circular(10)) ,
+                ) ,
               ],
             ),
             SizedBox(
@@ -59,7 +55,7 @@ class FoodCard extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.05,
                 ) ,
                 Text(
-                  "${food.price} \$",
+                  "${42} \$",
                   style: MyTextStyle.boldTitleStyle(),
                 ),
                 SizedBox(

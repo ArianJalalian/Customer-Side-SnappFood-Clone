@@ -1,4 +1,6 @@
 import 'package:customer_side/Widgets/HomePageNavigation.dart';
+import 'package:customer_side/Widgets/Profile2.dart';
+import 'package:customer_side/Widgets/ProfilePage.dart';
 import 'package:flutter/material.dart';
 
 import 'CartPage.dart';
@@ -14,6 +16,7 @@ class _MainPagesState extends State<MainPages> {
     CartPage() ,
     HomePage() ,
     OrdersPage() ,
+    AccountPage() ,
   ] ;
   int _selectedIndex = 1 ;
   @override
@@ -63,6 +66,16 @@ class _MainPagesState extends State<MainPages> {
           ),
           title: Text(
             "Orders",
+            style: TextStyle(color: Colors.pink),
+          ),
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(
+            Icons.person_outline ,
+            color: Colors.pink,
+          ),
+          title: Text(
+            "Profile",
             style: TextStyle(color: Colors.pink),
           ),
         ),

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:same_features/Models/User.dart';
 
 import 'CartPage.dart';
-import 'HomePageNavigation.dart';
+
 
 class HomePage extends StatelessWidget {
 
@@ -14,6 +14,16 @@ class HomePage extends StatelessWidget {
         .settings
         .arguments as User;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.pink ,
+        title: Text(
+          "Home",
+          style: TextStyle(
+            color: Colors.white ,
+            fontSize: 20 ,
+          ) ,
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,

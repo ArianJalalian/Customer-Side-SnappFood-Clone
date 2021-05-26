@@ -7,10 +7,22 @@ import 'SignUp.dart';
 class MyFirstPageInit extends StatelessWidget {
   final Function onSignIn;
   final Function onSignUp;
+
   MyFirstPageInit({Key key, this.onSignIn, this.onSignUp}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.pink ,
+        title: Text(
+          "SignIn",
+          style: TextStyle(
+            color: Colors.white ,
+            fontSize: 20 ,
+          ) ,
+        ),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -39,7 +51,9 @@ class MyFirstPageInit extends StatelessWidget {
 class MyForm extends StatefulWidget {
   final Function onSignIn;
   final Function onSignUp;
+
   MyForm({Key key, this.onSignIn, this.onSignUp}) : super(key: key);
+
   @override
   _MyFormState createState() => _MyFormState();
 }
@@ -51,7 +65,8 @@ class _MyFormState extends State<MyForm> {
   String _password;
   Function onSignIn;
   Function onSignUp;
-  User _user ;
+  User _user;
+
   @override
   Widget build(BuildContext context) {
     onSignUp = widget.onSignUp;
@@ -63,15 +78,13 @@ class _MyFormState extends State<MyForm> {
           phoneNumberField(),
           passwordField(),
           ElevatedButton(
-            onPressed: (){
+            onPressed: () {
               if (_formKey.currentState.validate()) {
                 _formKey.currentState.save();
-                onSignIn(
-                    _user = User(
-                      phoneNumber: _phoneNumber,
-                      password: _password,
-                    )
-                );
+                onSignIn(_user = User(
+                  phoneNumber: _phoneNumber,
+                  password: _password,
+                ));
               }
             },
             child: Text("sign in"),
@@ -82,8 +95,8 @@ class _MyFormState extends State<MyForm> {
               Text("Don't have account?"),
               TextButton(
                 child: Text("make one"),
-                onPressed: (){
-                 onSignUp() ;
+                onPressed: () {
+                  onSignUp();
                 },
               )
             ],
@@ -104,9 +117,8 @@ class _MyFormState extends State<MyForm> {
       onSaved: (value) {
         _phoneNumber = value;
       },
-      validator: (value){
-        if (value == "")
-          return "Enter Phone Number";
+      validator: (value) {
+        if (value == "") return "Enter Phone Number";
         return null;
       },
     );
@@ -124,21 +136,22 @@ class _MyFormState extends State<MyForm> {
           suffixIcon: GestureDetector(
             child: Icon(
               Icons.remove_red_eye,
-              color: (_passwordState) ? Colors.grey : Theme.of(context).primaryColor,
+              color: (_passwordState)
+                  ? Colors.grey
+                  : Theme.of(context).primaryColor,
             ),
-            onTap: (){
+            onTap: () {
               setState(() {
                 _passwordState = !_passwordState;
               });
             },
           ),
         ),
-        onSaved: (value){
+        onSaved: (value) {
           _password = value;
         },
-        validator: (value){
-          if (value == "")
-            return "Enter password";
+        validator: (value) {
+          if (value == "") return "Enter password";
           return null;
         },
       ),

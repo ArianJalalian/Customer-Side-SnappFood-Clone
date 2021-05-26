@@ -6,8 +6,10 @@ import 'package:intl/intl.dart';
 import 'package:same_features/Models/Comment.dart';
 
 class CommentCard extends StatelessWidget {
-  final Comment comment ;
-  CommentCard({this.comment});
+  //final Comment comment ;
+  String text ;
+  String rate ;
+  CommentCard(this.text ,this.rate );
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,7 +17,7 @@ class CommentCard extends StatelessWidget {
         border: Border.all(color: Colors.grey, width: 0.5),
         color: Colors.white,
       ),
-      height: comment.isAnswered()
+      height: true //comment.isAnswered()
           ? MediaQuery.of(context).size.height * 0.4
           : MediaQuery.of(context).size.height * 0.25,
       child: Column(
@@ -28,7 +30,7 @@ class CommentCard extends StatelessWidget {
                 0,
                 MediaQuery.of(context).size.width * 0.01),
             child: Text(
-              comment.name , // User.name
+              "Arian" , //comment.name , // User.name
               style: MyTextStyle.boldTitleStyle(),
             ),
           ),
@@ -42,9 +44,9 @@ class CommentCard extends StatelessWidget {
                 color: Colors.grey,
               ),
               Text(
-                DateFormat.yMMMd().format(comment.time) +
+                DateFormat.yMMMd().format(DateTime.now()/*comment.time*/) +
                     " | " +
-                    DateFormat.Hm().format(comment.time),
+                    DateFormat.Hm().format(DateTime.now()/*comment.time*/),
                 style: MyTextStyle.subtitleStyle(),
               ),
               SizedBox(
@@ -54,7 +56,7 @@ class CommentCard extends StatelessWidget {
                 child: Row(
                   children: [
                     Text(
-                      comment.score , // Score
+                      rate , //comment.score , // Score
                       style: TextStyle(
                         fontSize: 15,
                       ),
@@ -74,10 +76,10 @@ class CommentCard extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
             child: Text(
-              comment.commentText ,
+              text,//comment.commentText ,
             ),
           ),
-          if (comment.isAnswered()) /*has answer*/
+          if (true/*comment.isAnswered()*/) /*has answer*/
             Column(
               children: <Widget>[
                 Padding(padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.01)) ,
@@ -91,7 +93,7 @@ class CommentCard extends StatelessWidget {
                     padding: EdgeInsets.all(
                         MediaQuery.of(context).size.width * 0.03),
                     child: Text(
-                      comment.answer ,
+                      "dasasdsdasaddsadasdfsdffdssf",//comment.answer ,
                       style: TextStyle(
                         fontSize: 17,
                         color: Colors.pink,

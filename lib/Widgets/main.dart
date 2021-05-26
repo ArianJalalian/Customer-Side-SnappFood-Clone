@@ -14,8 +14,10 @@ import './OrderCard.dart';
 import 'CartPage.dart';
 import 'CommentCard.dart';
 import 'CommentPage.dart';
+import 'Map.dart';
 import 'Restaurants.dart';
 import 'SignInPage.dart';
+import 'SignUp2.dart';
 
 void main() {
   runApp(MyApp());
@@ -30,8 +32,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/' ,
       routes: {
         '/' : (context) => SignInPage() ,
-        '/SignUpPage' : (context) => SignUpPage(),
-        '/HomePage' : (context) => HomePage()  ,
+        '/SignUpPage' : (context) => SignUpPage2(),
+        '/Profile/Map' : (context) => IntialMapPage() ,
         '/MainPages' : (context) => MainPages()  ,
         '/HomePage/Restaurants' : (context) => Restaurants() ,
         '/HomePage/Restaurants/RestaurantPage' : (context) => RestaurantPage() ,
@@ -39,7 +41,6 @@ class MyApp extends StatelessWidget {
         '/HomePage/CartPage' : (context) => CartPage() ,
       },
       title: "MealApp" ,
-      //home : SignInPage(),
     );
   }
 }
