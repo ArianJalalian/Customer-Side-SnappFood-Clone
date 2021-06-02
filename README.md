@@ -1,16 +1,19 @@
-# customer_side
+# a Meal App 
+- SBU AP course(1400) project 
+- Containing two sides (Customer and Restaurant) 
+- Customer side by me (Arian Jalalian) 
+- Restaurant side by Mohammad Shabani 
 
-A new Flutter application.
+![Image](./ScreenShots/Screenshot_1622667910.png)  
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+![Image](./ScreenShots/Screenshot_1622667931.png)  
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+![Image](./ScreenShots/Screenshot_1622667936.png)  
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+![Image](./ScreenShots/Screenshot_1622667952.png)  
+
+
+![Image](./ScreenShots/Screenshot_1622667959.png) 
