@@ -4,18 +4,18 @@ import 'package:latlong/latlong.dart';
 import 'package:same_features/Models/Customer.dart';
 import 'package:same_features/Models/User.dart';
 
-class AccountPage extends StatefulWidget {
+class Profile extends StatefulWidget {
   @override
-  _AccountPageState createState() => _AccountPageState();
+  _ProfileState createState() => _ProfileState();
 }
 
-class _AccountPageState extends State<AccountPage> {
-  final GlobalKey formKey = GlobalKey<FormState>();
+class _ProfileState extends State<Profile> {
 
-  Customer customer;
-  bool isLocationPicked = false;
-  LatLng location;
-  double radius;
+  final GlobalKey _formKey = GlobalKey<FormState>();
+  Customer _customer;
+  bool _isLocationPicked = false;
+  LatLng _location;
+  double _radius;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class _AccountPageState extends State<AccountPage> {
         margin: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
         child: SingleChildScrollView(
           child: Form(
-            key: formKey,
+            key: _formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -50,7 +50,7 @@ class _AccountPageState extends State<AccountPage> {
                   title: "Your name",
                   value: "Arian",
                   onSaved: (value) {
-                    customer.orderList = value;
+                    _customer.orderList = value;
                   },
                 ),
                 myTextForm(
@@ -84,14 +84,14 @@ class _AccountPageState extends State<AccountPage> {
                             context, '/Profile/Map');
                         if (latlng != null) {
                           setState(() {
-                            isLocationPicked = true;
-                            location = latlng;
+                            _isLocationPicked = true;
+                            _location = latlng;
                           });
                         }
                       },
                       child: Text("Pick a Location"),
                     ),
-                    isLocationPicked
+                    _isLocationPicked
                         ? Icon(
                             Icons.check,
                             color: Colors.green,

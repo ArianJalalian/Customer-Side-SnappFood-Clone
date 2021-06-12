@@ -1,6 +1,4 @@
-import 'package:customer_side/Widgets/HomePageNavigation.dart';
-import 'package:customer_side/Widgets/Profile2.dart';
-import 'package:customer_side/Widgets/ProfilePage.dart';
+import 'package:customer_side/Widgets/Profile.dart';
 import 'package:flutter/material.dart';
 
 import 'CartPage.dart';
@@ -16,7 +14,7 @@ class _MainPagesState extends State<MainPages> {
     CartPage() ,
     HomePage() ,
     OrdersPage() ,
-    AccountPage() ,
+    Profile() ,
   ] ;
   int _selectedIndex = 1 ;
   @override

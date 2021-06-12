@@ -1,235 +1,162 @@
-import 'package:customer_side/Widgets/TextStyle.dart';
 import 'package:flutter/material.dart';
-import 'package:same_features/Models/User.dart';
+import 'package:same_features/Widgets/TextStyle.dart';
 
 
-class SignUp extends StatelessWidget {
-  User user;
-
-  String name;
-
-  String lastName;
-
-  String PhoneNumber;
-
-  String address; // multiple addresses
-  String password;
-
-  final RegExp exp = RegExp(r"(\w)");
-  final formKey = GlobalKey<FormState>();
-  final Function onSubmit ;
+class SignUp extends StatefulWidget {
+  final Function onSubmit;
 
   SignUp({Key key, this.onSubmit}) : super(key: key);
 
   @override
+  _SignUpState createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
+  var _formKey = GlobalKey<FormState>();
+  String _name;
+  String _lastName;
+  String _address;
+  String _email;
+  String _phoneNumber;
+  String _password;
+  bool _passwordState = true;
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
+      appBar: AppBar(
+        title: Text("SignUp"),
+      ),
+      body: Center(
         child: Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.1,
-              ),
-              Center(
-                child: Text("Enter your Information",
-                    style: MyTextStyle.boldTitleStyle()),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.1,
-              ),
-              Form(
-                key: formKey,
-                child: Column(
-                  children: <Widget>[
-                    nameCard(context),
-                    lastNameCard(context),
-                    phoneNumber(context),
-                    passwordCard(context),
-                    Container(
-                      margin: EdgeInsets.all(MediaQuery.of(context).size.width * 0.1),
-                      child: ConstrainedBox(
-                        constraints: BoxConstraints.tightFor(
-                          width: MediaQuery.of(context).size.width * 0.64,
-                          height: MediaQuery.of(context).size.height * 0.07,
-                        ),
-                        child: ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                Colors.pinkAccent),
-                          ),
-                          onPressed: () {
-                            if (formKey.currentState.validate()) {
-                              formKey.currentState.save();
-                              user = User(
-                                  name: name,
-                                  password: password,
-                                  phoneNumber: PhoneNumber);
-                              onSubmit(user) ;
-                            }
-                          },
-                          child: Text("Agree"),
-                        ),
-                      ),
+          width: MediaQuery.of(context).size.width * 0.8,
+          child: SingleChildScrollView(
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    padding: EdgeInsets.symmetric(vertical: 30),
+                    child: Text(
+                      "Your Information",
+                      style: MyTextStyle.boldTitleStyle(),
                     ),
-                  ],
-                ),
+                  ),
+                  myTextFormField(
+                    context: context,
+                    label: "Your name",
+                    onSaved: (value) {
+                      _name = value;
+                    },
+                    error: "Enter your name",
+                  ),
+                  myTextFormField(
+                    context: context,
+                    label: "Your phone number",
+                    numKey: true,
+                    onSaved: (value) {
+                      _phoneNumber = value;
+                    },
+                    error: "Enter your phone number",
+                  ),
+                  myTextFormField(
+                    context: context,
+                    label: "Your Last name",
+                    onSaved: (value) {
+                      _lastName = value;
+                    },
+                    error: "Enter your Last name",
+                  ),
+                  myTextFormField(
+                    context: context,
+                    label: "Your address",
+                    onSaved: (value) {
+                      _address = value;
+                    },
+                    error: "Enter your address",
+                  ),
+                  myPasswordField(context: context),
+                  myButton(),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),
     );
   }
 
-  Widget nameCard(context) {
-    return Container(
-      padding: EdgeInsets.fromLTRB(
-          MediaQuery.of(context).size.width * 0.05, 0, 0, 0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ConstrainedBox(
-            constraints: BoxConstraints.tightFor(
-              width: MediaQuery.of(context).size.width * 0.9,
-            ),
-            child: TextFormField(
-              cursorColor: Theme.of(context).primaryColor,
-              onSaved: (value) {
-                name = value;
-              },
-              keyboardType: TextInputType.name,
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.person),
-                labelText: "Name",
-              ),
-              validator: (value) {
-                if (value == null || value.isEmpty) return "Invalid";
-                return null;
-              },
-            ),
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.03,
-          ),
-        ],
+  Widget myTextFormField({
+    BuildContext context,
+    Function onSaved,
+    String label,
+    String error,
+    bool numKey = false,
+  }) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 8),
+      child: TextFormField(
+        keyboardType: numKey ? TextInputType.phone : TextInputType.text,
+        cursorColor: Theme.of(context).primaryColor,
+        decoration: InputDecoration(
+          labelText: label,
+        ),
+        onSaved: onSaved,
+        validator: (value) {
+          if (value == "" || value == null) return error;
+          return null;
+        },
       ),
     );
   }
 
-  Widget lastNameCard(context) {
-    return Container(
-      padding: EdgeInsets.fromLTRB(
-          MediaQuery.of(context).size.width * 0.05, 0, 0, 0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ConstrainedBox(
-            constraints: BoxConstraints.tightFor(
-              width: MediaQuery.of(context).size.width * 0.9,
+  Widget myPasswordField({BuildContext context}) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 8),
+      child: TextFormField(
+        obscureText: _passwordState,
+        cursorColor: Theme.of(context).primaryColor,
+        decoration: InputDecoration(
+          labelText: "Password",
+          suffixIcon: GestureDetector(
+            child: Icon(
+              Icons.remove_red_eye,
+              color: (_passwordState)
+                  ? Colors.grey
+                  : Theme.of(context).primaryColor,
             ),
-            child: TextFormField(
-              cursorColor: Theme.of(context).primaryColor,
-              onSaved: (value) {
-                lastName = value;
-              },
-              keyboardType: TextInputType.name,
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.person),
-                labelText: "Last Name",
-              ),
-              validator: (value) {
-                if (value == null || value.isEmpty) return "Invalid";
-                return null;
-              },
-            ),
+            onTap: () {
+              setState(() {
+                _passwordState = !_passwordState;
+              });
+            },
           ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.03,
-          ),
-        ],
+        ),
+        onSaved: (value) {
+          _password = value;
+        },
+        validator: (value) {
+          if (value == "") return "Enter password";
+          if (value.length < 6) return "Password is too short";
+          return null;
+        },
       ),
     );
   }
 
-  Widget phoneNumber(context) {
-    return Container(
-      padding: EdgeInsets.fromLTRB(
-          MediaQuery.of(context).size.width * 0.05, 0, 0, 0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ConstrainedBox(
-            constraints: BoxConstraints.tightFor(
-              width: MediaQuery.of(context).size.width * 0.9,
-            ),
-            child: TextFormField(
-              cursorColor: Theme.of(context).primaryColor,
-              onSaved: (value) {
-                PhoneNumber = value;
-              },
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.phone_enabled),
-                labelText: "Phone Number",
-              ),
-              validator: (value) {
-                if (value == null ||
-                    value.isEmpty ||
-                    value.length < 11) // + doesn't exists at the time
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text('a Valid Phone Number has 11 digits')));
-                return null;
-              },
-            ),
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.03,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget passwordCard(context) {
-    return Container(
-      padding: EdgeInsets.fromLTRB(
-          MediaQuery.of(context).size.width * 0.05, 0, 0, 0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ConstrainedBox(
-            constraints: BoxConstraints.tightFor(
-              width: MediaQuery.of(context).size.width * 0.9,
-            ),
-            child: TextFormField(
-              cursorColor: Theme.of(context).primaryColor,
-              onSaved: (value) {
-                password = value;
-              },
-              keyboardType: TextInputType.name,
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.vpn_key_outlined),
-                labelText: "Password",
-              ),
-              validator: (value) {
-                if (value == null ||
-                    value.isEmpty ||
-                    value.length < 6 ||
-                    !exp.hasMatch(value))
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text(
-                          'a Valid Password has at least 6 characters and must include 0-9 or alphabets ')));
-                return null;
-              },
-            ),
-          ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.03,
-          ),
-        ],
+  Widget myButton() {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 16),
+      child: ElevatedButton(
+        child: Text("Sign Up"),
+        onPressed: () {
+          if (_formKey.currentState.validate()) {
+            _formKey.currentState.save();
+            Navigator.pop(context);
+            //widget.onSubmit() ;
+          }
+        },
       ),
     );
   }

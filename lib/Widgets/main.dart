@@ -17,7 +17,7 @@ import 'CommentPage.dart';
 import 'Map.dart';
 import 'Restaurants.dart';
 import 'SignInPage.dart';
-import 'SignUp2.dart';
+import 'SignUp.dart';
 
 void main() {
   runApp(MyApp());
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/' ,
       routes: {
         '/' : (context) => SignInPage() ,
-        '/SignUpPage' : (context) => SignUpPage2(),
+        '/SignUpPage' : (context) => SignUp(),
         '/Profile/Map' : (context) => IntialMapPage() ,
         '/MainPages' : (context) => MainPages()  ,
         '/HomePage/Restaurants' : (context) => Restaurants() ,
