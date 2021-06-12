@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:customer_side/Widgets/FoodCard.dart';
 import 'package:customer_side/Widgets/TextStyle.dart';
 import 'package:same_features/Models/Seller.dart';
-import 'FavouriteRestaurantButton.dart';
+import '../Widgets/FavouriteRestaurantButton.dart';
 
 class RestaurantPage extends StatelessWidget {
   @override

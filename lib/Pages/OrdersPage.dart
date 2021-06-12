@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'OrderCard.dart';
+import '../Widgets/OrderCard.dart';
 class OrdersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

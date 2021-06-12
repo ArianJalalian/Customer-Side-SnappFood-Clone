@@ -1,7 +1,7 @@
 import 'package:customer_side/Widgets/TextStyle.dart';
 import 'package:flutter/material.dart';
 
-import 'CommentCard.dart';
+import '../Widgets/CommentCard.dart';
 
 import 'package:same_features/Models/Seller.dart';
 import 'package:same_features/Models/Comment.dart';

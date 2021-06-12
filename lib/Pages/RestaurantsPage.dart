@@ -1,7 +1,7 @@
 import 'package:customer_side/Widgets/RestaurantInfoCard.dart';
 import 'package:flutter/material.dart';
 
-class Restaurants extends StatelessWidget {
+class RestaurantsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

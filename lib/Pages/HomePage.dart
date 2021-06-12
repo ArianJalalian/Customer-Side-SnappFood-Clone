@@ -1,8 +1,6 @@
-import 'package:customer_side/Widgets/TextStyle.dart';
 import 'package:flutter/material.dart';
 import 'package:same_features/Models/User.dart';
 
-import 'CartPage.dart';
 
 
 class HomePage extends StatelessWidget {
