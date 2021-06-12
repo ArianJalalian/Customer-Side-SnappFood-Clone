@@ -1,4 +1,3 @@
-import 'package:customer_side/Widgets/SignUp.dart';
 import 'package:flutter/material.dart';
 import '../Widgets/SignUp.dart';
 

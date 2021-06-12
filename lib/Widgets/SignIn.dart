@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:same_features/Widgets/TextStyle.dart';
 import 'package:same_features/Models/User.dart';
-import 'SignUp.dart';
+
 
 class MyFirstPageInit extends StatelessWidget {
   final Function onSignIn;
@@ -118,13 +118,14 @@ class _MyFormState extends State<MyForm> {
         _phoneNumber = value;
       },
       validator: (value) {
-        if (value == "") return "Enter Phone Number";
+        if (value == null || value.isEmpty || value.length != 11 ) return "Enter a valid Phone Number";
         return null;
       },
     );
   }
 
   Widget passwordField() {
+    RegExp exp = RegExp(r"(\w+)") ;
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 16),
       child: TextFormField(
@@ -151,7 +152,9 @@ class _MyFormState extends State<MyForm> {
           _password = value;
         },
         validator: (value) {
-          if (value == "") return "Enter password";
+          if (value.isEmpty || value == null ) return "Enter password";
+          if (value.length < 6) return "Password is too short";
+          if (!exp.hasMatch(value)) return "it should has alphabets and digits only" ;
           return null;
         },
       ),

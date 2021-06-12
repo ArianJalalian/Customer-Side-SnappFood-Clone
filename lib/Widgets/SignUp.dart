@@ -49,7 +49,11 @@ class _SignUpState extends State<SignUp> {
                     onSaved: (value) {
                       _name = value;
                     },
-                    error: "Enter your name",
+                    validator: (value) {
+                      if (value.toString().isEmpty || value == null)
+                        return "Enter your name" ;
+                      return null;
+                    } ,
                   ),
                   myTextFormField(
                     context: context,
@@ -58,7 +62,11 @@ class _SignUpState extends State<SignUp> {
                     onSaved: (value) {
                       _phoneNumber = value;
                     },
-                    error: "Enter your phone number",
+                    validator: (value) {
+                      if (value.toString().length != 11 )
+                        return "Enter a valid phone number" ;
+                      return null ;
+                    },
                   ),
                   myTextFormField(
                     context: context,
@@ -66,7 +74,11 @@ class _SignUpState extends State<SignUp> {
                     onSaved: (value) {
                       _lastName = value;
                     },
-                    error: "Enter your Last name",
+                    validator: (value) {
+                      if (value.toString().isEmpty || value == null)
+                        return "Enter your Last name" ;
+                      return null;
+                    },
                   ),
                   myTextFormField(
                     context: context,
@@ -74,7 +86,11 @@ class _SignUpState extends State<SignUp> {
                     onSaved: (value) {
                       _address = value;
                     },
-                    error: "Enter your address",
+                    validator: (value) {
+                      if (value.toString().isEmpty || value == null)
+                        return "Enter your Address" ;
+                      return null;
+                    },
                   ),
                   myPasswordField(context: context),
                   myButton(),
@@ -90,8 +106,8 @@ class _SignUpState extends State<SignUp> {
   Widget myTextFormField({
     BuildContext context,
     Function onSaved,
+    Function validator ,
     String label,
-    String error,
     bool numKey = false,
   }) {
     return Padding(
@@ -103,15 +119,13 @@ class _SignUpState extends State<SignUp> {
           labelText: label,
         ),
         onSaved: onSaved,
-        validator: (value) {
-          if (value == "" || value == null) return error;
-          return null;
-        },
+        validator: validator ,
       ),
     );
   }
 
   Widget myPasswordField({BuildContext context}) {
+    RegExp exp = RegExp(r"(\w+)") ;
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 8),
       child: TextFormField(
@@ -137,8 +151,9 @@ class _SignUpState extends State<SignUp> {
           _password = value;
         },
         validator: (value) {
-          if (value == "") return "Enter password";
+          if (value.isEmpty || value == null ) return "Enter password";
           if (value.length < 6) return "Password is too short";
+          if (!exp.hasMatch(value)) return "it should has alphabets and digits only" ;
           return null;
         },
       ),

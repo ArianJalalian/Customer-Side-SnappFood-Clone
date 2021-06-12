@@ -1,9 +1,9 @@
 import 'package:customer_side/Widgets/Profile.dart';
 import 'package:flutter/material.dart';
-
 import 'CartPage.dart';
 import 'HomePage.dart';
 import 'OrdersPage.dart';
+
 class MainPages extends StatefulWidget {
   @override
   _MainPagesState createState() => _MainPagesState();

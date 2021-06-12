@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:latlong/latlong.dart';
 import 'package:same_features/Models/Customer.dart';
-import 'package:same_features/Models/User.dart';
+
 
 class Profile extends StatefulWidget {
   @override

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-
 import 'package:customer_side/Widgets/TextStyle.dart';
-
 import 'package:same_features/Models/Food.dart';
 
 class FoodCard extends StatelessWidget {
