@@ -46,43 +46,6 @@ class MyApp extends StatelessWidget {
 }
 
 
-class MyHomePage extends StatelessWidget {
-  // This widget is the root of your application.
-  final cards
-  = {
-    OrderCard(address: "vanak sq",
-      date: DateTime.now(),
-      price: 20,
-      restaurantName: "McDonalds",),
-    OrderCard(address: "vanak sq",
-      date: DateTime.now(),
-      price: 20,
-      restaurantName: "McDonalds",),
-    OrderCard(address: "vanak sq",
-      date: DateTime.now(),
-      price: 20,
-      restaurantName: "McDonalds",),
-    OrderCard(address: "vanak sq",
-      date: DateTime.now(),
-      price: 20,
-      restaurantName: "McDonalds",),
-    OrderCard(address: "vanak sq",
-      date: DateTime.now(),
-      price: 20,
-      restaurantName: "McDonalds",),
-    OrderCard(address: "vanak sq",
-      date: DateTime.now(),
-      price: 20,
-      restaurantName: "McDonalds",),
-
-  };
-
-  @override
-  Widget build(BuildContext context) {
-    return HomePage() ;
-  }
-}
-
 
 
 
