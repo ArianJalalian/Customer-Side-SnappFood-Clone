@@ -1,16 +1,15 @@
+import 'package:customer_side/Widgets/TextStyle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:latlong/latlong.dart';
 import 'package:same_features/Models/Customer.dart';
 
-
-class Profile extends StatefulWidget {
+class ProfilePage extends StatefulWidget {
   @override
-  _ProfileState createState() => _ProfileState();
+  _ProfilePageState createState() => _ProfilePageState();
 }
 
-class _ProfileState extends State<Profile> {
-
+class _ProfilePageState extends State<ProfilePage> {
   final GlobalKey _formKey = GlobalKey<FormState>();
   Customer _customer;
   bool _isLocationPicked = false;
@@ -24,7 +23,7 @@ class _ProfileState extends State<Profile> {
         backgroundColor: Colors.pink,
         title: Text(
           "Profile",
-          style: TextStyle(fontSize: 20 , color: Colors.white),
+          style: TextStyle(fontSize: 20, color: Colors.white),
         ),
       ),
       body: Container(
@@ -69,19 +68,49 @@ class _ProfileState extends State<Profile> {
                   },
                 ),
                 myTextForm(
-                  title: "Your address",
+                  title: "Your Address",
                   value: "Vanak sq , ..... ",
                   onSaved: (value) {
                     //seller.address = value;
                   },
                 ),
+                myTextForm(
+                  title: "Your Wallet",
+                  prefix: Text(
+                    "You have : ",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  onSaved: (value) {},
+                ),
+                SizedBox(
+                  height: 5 ,
+                ) ,
+                RaisedButton(
+                  padding: EdgeInsets.only(top : 13 , bottom: 13 ) ,
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/Profile/UserCommentsPage' ) ;
+                  },
+                  color: Colors.pink,
+                  child: Center(
+                    child: Text(
+                      "Your Comments",
+                      style: TextStyle(
+                        color: Colors.white ,
+                        fontSize: 20 ,
+                      ) ,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 5 ,
+                ) ,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ElevatedButton(
                       onPressed: () async {
-                        var latlng = await Navigator.pushNamed(
-                            context, '/Profile/Map');
+                        var latlng =
+                            await Navigator.pushNamed(context, '/Profile/Map');
                         if (latlng != null) {
                           setState(() {
                             _isLocationPicked = true;
@@ -102,6 +131,9 @@ class _ProfileState extends State<Profile> {
                           ),
                   ],
                 ),
+                SizedBox(
+                  height: 5 ,
+                ) ,
                 ElevatedButton(
                   child: Text("Save"),
                   onPressed: () {},
@@ -115,7 +147,11 @@ class _ProfileState extends State<Profile> {
   }
 
   Widget myTextForm(
-      {String title, String value, Function onSaved, bool numKey = false}) {
+      {String title,
+      String value,
+      Function onSaved,
+      bool numKey = false,
+      Widget prefix}) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 8),
       child: TextFormField(
@@ -123,6 +159,7 @@ class _ProfileState extends State<Profile> {
         keyboardType: numKey ? TextInputType.number : TextInputType.text,
         initialValue: value,
         decoration: InputDecoration(
+          prefix: prefix,
           labelText: title,
         ),
         onSaved: onSaved,

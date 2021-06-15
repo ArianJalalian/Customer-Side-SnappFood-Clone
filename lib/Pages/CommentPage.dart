@@ -16,11 +16,11 @@ class _CommentPageState extends State<CommentPage> {
   String _commentText ;
   String _value = "1" ;
   var Comments = [
-    CommentCard("dsasdadsd" , "5"),
-    CommentCard("sdasdasad", "5"),
-    CommentCard("sdadsad", "5"),
-    CommentCard("Sdasads", "5"),
-    CommentCard("sadsadsadsda", "5"),
+    CommentCard( text : "dsasdadsd" , rate :  "5" , restaurantName : "" , restaurantPage : true ),
+    CommentCard( text : "dsasdadsd" , rate :  "5" , restaurantName : "" , restaurantPage : true ),
+    CommentCard( text : "dsasdadsd" , rate :  "5" , restaurantName : "" , restaurantPage : true ),
+    CommentCard( text : "dsasdadsd" , rate :  "5" , restaurantName : "" , restaurantPage : true ),
+    CommentCard( text : "dsasdadsd" , rate :  "5" , restaurantName : "" , restaurantPage : true ),
   ] ;
 
   @override
@@ -99,7 +99,7 @@ class _CommentPageState extends State<CommentPage> {
                     setState(() {
                       if (_formKey.currentState.validate()) {
                         _formKey.currentState.save();
-                        Comments.add(CommentCard(_commentText ,_value)) ;
+                        Comments.add(CommentCard(text : _commentText , rate : _value , restaurantPage: true ,)) ;
                         _formKey.currentState.reset();
                         _value = "1" ;
                       }

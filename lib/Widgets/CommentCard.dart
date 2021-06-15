@@ -8,7 +8,14 @@ class CommentCard extends StatelessWidget {
   //final Comment comment ;
   String text ;
   String rate ;
-  CommentCard(this.text ,this.rate );
+  bool restaurantPage ;
+  String restaurantName ;
+  CommentCard({
+    this.text,
+    this.rate,
+    this.restaurantName ,
+    this.restaurantPage
+  });
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,7 +36,7 @@ class CommentCard extends StatelessWidget {
                 0,
                 MediaQuery.of(context).size.width * 0.01),
             child: Text(
-              "Arian" , //comment.name , // User.name
+              restaurantPage ? "Arian" : "McDonalds" , //comment.name , // User.name
               style: MyTextStyle.boldTitleStyle(),
             ),
           ),
