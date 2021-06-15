@@ -27,18 +27,18 @@ class HomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            roundedBox("Persian", context),
-            roundedBox("FastFood", context),
-            roundedBox("SeaFood", context),
-            roundedBox("Near you", context),
-            roundedBox("Your Favourites", context),
+            roundedBox("Persian", context , Colors.green),
+            roundedBox("FastFood", context , Colors.red),
+            roundedBox("SeaFood", context , Colors.lightBlueAccent),
+            roundedBox("Near you", context , Colors.deepPurpleAccent),
+            roundedBox("Your Favourites", context , Colors.yellow),
           ],
         ),
       ),
     );
   }
 
-  Widget roundedBox(String title, BuildContext ctx) {
+  Widget roundedBox(String title, BuildContext ctx , Color color) {
     return Center(
       child: Container(
         margin:
@@ -78,7 +78,7 @@ class HomePage extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
               ),
-              backgroundColor: MaterialStateProperty.all(Colors.pink),
+              backgroundColor: MaterialStateProperty.all(color),
             ),
           ),
         ),
