@@ -41,9 +41,34 @@ class RestaurantPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text(
-                  "McDonalds",
-                  style: MyTextStyle.boldTitleStyle(),
+                Row(
+                  children: [
+                    Text(
+                      "McDonalds",
+                      style: MyTextStyle.boldTitleStyle(),
+                    ),
+                    SizedBox(
+                      width: screen.width * 0.085,
+                    ),
+                    Container(
+                      height: screen.height * 0.04,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: /*seller.isAvailable*/ false
+                            ? Colors.green
+                            : Colors.red,
+                      ),
+                      padding: EdgeInsets.all(screen.width * 0.01),
+                      child: Center(
+                        child: Text(
+                          /*seller.isAvailable*/ false
+                            ? "We are open !"
+                            : "We are close :(" ,
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
                 Row(
                   children: <Widget>[
@@ -124,4 +149,3 @@ class RestaurantPage extends StatelessWidget {
     );
   }
 }
-
